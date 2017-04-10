@@ -21,6 +21,8 @@ Theo trục thời gian nằm ngang, các thông tin chính thu thập bao gồm
 
 ![alt tag](https://github.com/nguyenvulebinh/batterystats/blob/master/power_use.png)
 
+Ví dụ phía trên, lượng pin của điện thoại là 2900 mAh, Lượng pin đã tiêu thụ là 704 mAh. Trong đó sử dụng cho màn hình là 347 mAh, app có uid là u0a86 sử dụng 173 mAh (Thực tế đây là app Chrome), thời gian chờ Idle chiếm 6.68 mAh,...
+
 ## Thống kê chi tiết tài nguyên tiêu thụ của từng app
 
 ![alt tag](https://github.com/nguyenvulebinh/batterystats/blob/master/detail.png)
