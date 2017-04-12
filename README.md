@@ -31,3 +31,7 @@ Ví dụ phía trên, lượng pin của điện thoại là 2900 mAh, Lượng 
 * THời gian sử dụng Bluetooth
 * Các tiến trình của app và tHời gian sử dụng CPU
 * Thời gian hoạt động của app 
+#Những khó khăn gặp phải khi thực hiện 
+* Để lấy được thông tin như đã liệt kê ở trên, ứng dụng cần phải có quyền hệ thống. Để có quyền hệ thống cần thỏa mãn một trong hai điều kiện sau:
+ - Thiết bị đã được root, như thế có thể chiếm quyền hệ thống để chạy lệnh
+ - Ứng dụng được cấp quyền hệ thống, để làm được điều này thì ứng dụng phải được cài đặt trong thư mục /system/priv-app (Chỉ có những ứng dụng của nhà sản xuất hoặc ứng dụng gốc của hệ điều hành mới được cài đặt trọng thư mục này)
