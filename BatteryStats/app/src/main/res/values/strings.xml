@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Battery Stats</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="notification">Notification</string>
+    <string name="battery_history">Battery History</string>
+    <string name="estimated_power_use">Estimated power use</string>
+    <string name="detailed_stats">Detailed stats</string>
+</resources>
