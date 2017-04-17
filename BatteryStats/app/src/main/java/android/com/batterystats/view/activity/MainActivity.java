@@ -1,16 +1,13 @@
-package android.com.batterystats.activity;
+package android.com.batterystats.view.activity;
 
 import android.com.batterystats.R;
-import android.com.batterystats.fragment.BatteryHistoryFragment;
-import android.com.batterystats.fragment.DetailStatsFragment;
-import android.com.batterystats.fragment.EstimatedPowerUseFragment;
-import android.com.batterystats.fragment.NotificationFragment;
+import android.com.batterystats.view.fragment.BatteryHistoryFragment;
+import android.com.batterystats.view.fragment.DetailStatsFragment;
+import android.com.batterystats.view.fragment.EstimatedPowerUseFragment;
+import android.com.batterystats.view.fragment.NotificationFragment;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
