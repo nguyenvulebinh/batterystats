@@ -14,12 +14,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.asksven.android.common.RootShell;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
+    private RootShell rootShell;
+    public static List<String> batHisContent;
+    private String TAG = MainActivity.class.getName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +45,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         showFragment(R.id.nav_notification);
+        rootShell = RootShell.getInstance();
+        batHisContent = rootShell.run("dumpsys batterystats");
+        Log.d(TAG, batHisContent.size() + "");
     }
 
     @Override
