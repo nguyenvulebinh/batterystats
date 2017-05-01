@@ -1,11 +1,20 @@
 package android.com.batterystats.view.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.com.batterystats.R;
+import android.com.batterystats.receiver.AlarmGetBatLog;
 import android.com.batterystats.view.fragment.BatteryHistoryFragment;
 import android.com.batterystats.view.fragment.DetailStatsFragment;
 import android.com.batterystats.view.fragment.EstimatedPowerUseFragment;
 import android.com.batterystats.view.fragment.NotificationFragment;
+import android.com.batterystats.viewmodel.ExecuteShellBatLog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Process;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -25,9 +34,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
-    private RootShell rootShell;
-    public static List<String> batHisContent;
     private String TAG = MainActivity.class.getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +53,21 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         showFragment(R.id.nav_notification);
-        rootShell = RootShell.getInstance();
-        batHisContent = rootShell.run("dumpsys batterystats");
-        Log.d(TAG, batHisContent.size() + "");
+        startAlarmGetBatLog();
+        ExecuteShellBatLog.executeShellBatLog(false, this);
+    }
+
+    /**
+     * Get Battery log each 8 hours
+     */
+    private void startAlarmGetBatLog() {
+        Intent alarm = new Intent(this, AlarmGetBatLog.class);
+        boolean alarmRunning = (PendingIntent.getBroadcast(this, 0, alarm, PendingIntent.FLAG_NO_CREATE) != null);
+        if (!alarmRunning) {
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarm, 0);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), 3600000, pendingIntent);
+        }
     }
 
     @Override

@@ -14,16 +14,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ProgressBar
-            android:id="@+id/progress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="#00000000" />
-
-        <im.delight.android.webview.AdvancedWebView
-            android:id="@+id/help_webview"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_list_bathis"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </LinearLayout>
 </layout>

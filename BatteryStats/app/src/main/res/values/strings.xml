@@ -11,4 +11,8 @@
     <string name="detailed_stats">Thống kê chi tiết</string>
     <string name="share">Chia sẻ</string>
     <string name="report">Báo lỗi</string>
+    <string name="now">Hiện tại</string>
+    <string name="use">Sử dụng</string>
+    <string name="unknown">Không đo được</string>
+
 </resources>
