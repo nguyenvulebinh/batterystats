@@ -22,7 +22,7 @@ public class EstimatedPowerUseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_estimated_power_use, container, false);
-        modelView = new EstimatedPowerUseModelView();
+        modelView = new EstimatedPowerUseModelView(getActivity(), dataBinding);
         dataBinding.setEstiPUMV(modelView);
         return dataBinding.getRoot();
     }

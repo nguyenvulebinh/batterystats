@@ -1,1 +1,1 @@
-include ':app', ':rootsupport'
+include ':app', ':rootsupport', ':drawchart'

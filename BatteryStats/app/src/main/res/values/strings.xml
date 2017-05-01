@@ -13,6 +13,9 @@
     <string name="report">Báo lỗi</string>
     <string name="now">Hiện tại</string>
     <string name="use">Sử dụng</string>
-    <string name="unknown">Không đo được</string>
+    <string name="compute_drain">Tính toán</string>
+    <string name="actual_drain">Thực tế</string>
+    <string name="unknown">Không có thông tin</string>
+    <string name="name_chart">Biểu đồ\nước tính sử dụng năng lượng</string>
 
 </resources>
