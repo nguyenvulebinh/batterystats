@@ -3,9 +3,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_notification"
-            android:icon="@drawable/ic_notification"
-            android:title="@string/notification" />
+            android:id="@+id/nav_detail"
+            android:icon="@drawable/ic_detail_stats"
+            android:title="@string/detailed_stats" />
+        <!--<item-->
+            <!--android:id="@+id/nav_notification"-->
+            <!--android:icon="@drawable/ic_notification"-->
+            <!--android:title="@string/notification" />-->
         <item
             android:id="@+id/nav_battery_history"
             android:icon="@drawable/ic_battery_history"
@@ -14,10 +18,6 @@
             android:id="@+id/nav_estimated"
             android:icon="@drawable/ic_estimated"
             android:title="@string/estimated_power_use" />
-        <item
-            android:id="@+id/nav_detail"
-            android:icon="@drawable/ic_detail_stats"
-            android:title="@string/detailed_stats" />
     </group>
 
     <item android:title="Communicate">

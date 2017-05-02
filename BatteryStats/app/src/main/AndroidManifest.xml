@@ -35,9 +35,17 @@
 
         <activity
             android:name=".view.activity.DetailEstimatedActivity"
-            android:parentActivityName=".view.activity.MainActivity"
             android:label="@string/estimated_power_use"
+            android:parentActivityName=".view.activity.MainActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ViewLogDetail"
+            android:label="@string/title_activity_view_log_detail"
+            android:parentActivityName=".view.activity.DetailEstimatedActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.com.batterystats.view.activity.DetailEstimatedActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ public class BatteryHistory {
     private String url;
     private String timeReset;
     private boolean head;
+    private Estimated estimated;
 
     public BatteryHistory() {
         head = false;
@@ -49,5 +50,13 @@ public class BatteryHistory {
 
     public void setHead(boolean head) {
         this.head = head;
+    }
+
+    public Estimated getEstimated() {
+        return estimated;
+    }
+
+    public void setEstimated(Estimated estimated) {
+        this.estimated = estimated;
     }
 }

@@ -8,6 +8,10 @@
         <variable
             name="deMV"
             type="android.com.batterystats.viewmodel.DetailEstimatedModelView" />
+
+        <variable
+            name="fileLog"
+            type="String"/>
     </data>
 
     <RelativeLayout
@@ -19,6 +23,24 @@
             android:id="@+id/piechart"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/title_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_time"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{deMV.timeEstimate}"
+            android:layout_marginStart="15dp"
+            android:layout_below="@id/title_time"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +64,8 @@
                 android:orientation="vertical"
                 android:paddingEnd="5dp"
                 android:paddingStart="10dp"
-                android:visibility="@{deMV.isShowChoose?View.VISIBLE:View.INVISIBLE}">
+                android:onClick="@{(view) -> deMV.clickDetail(view, fileLog)}"
+                android:visibility="@{deMV.isShowChoose?View.VISIBLE:View.GONE}">
 
 
                 <TextView

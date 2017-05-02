@@ -69,7 +69,6 @@ class ItemEstimateFooterViewHolder extends RecyclerView.ViewHolder {
 
 class EstimateRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<BatteryHistory> listBatteryHistories;
-    private ArrayList<Estimated> listEstimateds;
 
     private Context context;
     private static final int TYPE_FOOTER = 0;
@@ -77,7 +76,6 @@ class EstimateRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public EstimateRecycleViewAdapter(Context context) {
         this.listBatteryHistories = new ArrayList<>();
-        this.listEstimateds = new ArrayList<>();
         this.context = context;
         getListBatteryHistory();
     }
@@ -93,7 +91,7 @@ class EstimateRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 File childInfo = new File(child.getAbsolutePath() + File.separator + StaticConfig.ESTIMATED_FILE_DEFAULT);
                 if (childInfo.exists()) {
                     Estimated estimated = new Estimated(context, childInfo);
-                    listEstimateds.add(estimated);
+                    batteryHistory.setEstimated(estimated);
                     listBatteryHistories.add(batteryHistory);
                 }
             }
@@ -128,7 +126,13 @@ class EstimateRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         try {
             ItemEstimateDataBinding hisDataBinding = ((ItemEstimateViewHolder) holder).getDataBinding();
             hisDataBinding.setBhis(listBatteryHistories.get(position));
-            hisDataBinding.setEstimate(listEstimateds.get(position));
+            hisDataBinding.setEstimate(listBatteryHistories.get(position).getEstimated());
+            hisDataBinding.setDerectory(StaticConfig.DATA_DIRECTORY + File.separator + listBatteryHistories.get(position).getRawTimeReset());
+            if(position == 0) {
+                hisDataBinding.setTime(context.getString(R.string.time_estimate).replace("_time_start_", listBatteryHistories.get(position).getTimeReset()).replace("_time_end_", context.getString(R.string.now)));
+            }else{
+                hisDataBinding.setTime(context.getString(R.string.time_estimate).replace("_time_start_", listBatteryHistories.get(position).getTimeReset()).replace("_time_end_", listBatteryHistories.get(position - 1).getTimeReset()));
+            }
         } catch (Exception ignored) {
         }
     }

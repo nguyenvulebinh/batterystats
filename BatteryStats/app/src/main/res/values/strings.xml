@@ -6,9 +6,9 @@
 
     <string name="action_settings">Settings</string>
     <string name="notification">Thông báo</string>
-    <string name="battery_history">Biểu đồ dùng pin</string>
+    <string name="battery_history">Lịch sử dùng pin</string>
     <string name="estimated_power_use">Điện năng tiêu thụ</string>
-    <string name="detailed_stats">Thống kê chi tiết</string>
+    <string name="detailed_stats">Biểu đồ hiện tại</string>
     <string name="share">Chia sẻ</string>
     <string name="report">Báo lỗi</string>
     <string name="now">Hiện tại</string>
@@ -17,5 +17,8 @@
     <string name="actual_drain">Thực tế</string>
     <string name="unknown">Không có thông tin</string>
     <string name="name_chart">Biểu đồ\nước tính sử dụng năng lượng</string>
+    <string name="title_time">Thống kê trong khoảng thời gian</string>
+    <string name="time_estimate">Từ   _time_start_\nTới   _time_end_</string>
+    <string name="title_activity_view_log_detail">Chi tiết ứng dụng</string>
 
 </resources>

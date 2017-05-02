@@ -10,6 +10,8 @@ import com.asksven.android.common.RootShell;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import static android.R.attr.max;
@@ -57,6 +59,8 @@ public class ExecuteShellBatLog {
         File fileInfo = new File(directory + File.separator + StaticConfig.STATS_INFO_FILE_DEFAULT);
         File fileRaw = new File(directory + File.separator + StaticConfig.RAW_FILE_DEFAULT);
         File fileEstimated = new File(directory + File.separator + StaticConfig.ESTIMATED_FILE_DEFAULT);
+        StringBuilder stringBuilder = new StringBuilder();
+        HashMap<String, String> mapDetailInfo = new HashMap<>();
         try {
             int start = -1, end = -1;
             String batCurrent = batHisContent.get(index).trim().split(" ")[2];
@@ -84,6 +88,7 @@ public class ExecuteShellBatLog {
             fileWriter.write(percent);
             boolean isEstimate = false;
             for (String line : batHisContent) {
+                stringBuilder.append(line).append("\n");
                 rawFileWriter.write(line + "\n");
                 if (line.contains("Estimated power use") && !isEstimate) {
                     isEstimate = true;
@@ -94,9 +99,27 @@ public class ExecuteShellBatLog {
                     if (line.toLowerCase().contains("uid")) {
                         String[] arg = line.trim().split(" ");
                         String packageName = getPackageNameFromUID(arg[1], packageManager);
+                        mapDetailInfo.put(packageName, arg[1]);
                         line = line.replace(arg[1], packageName);
                     }
                     fileWriterEstimate.write(line + "\n");
+                }
+            }
+            for (String keyPackage : mapDetailInfo.keySet()) {
+                try {
+                    String aid = mapDetailInfo.get(keyPackage);
+                    if(aid.startsWith("u0a")) {
+                        int indexStart = stringBuilder.indexOf(aid + "\n");
+                        if (indexStart == -1) continue;
+                        int indexEnd = stringBuilder.indexOf("u0a", indexStart + 1);
+                        if (indexEnd == -1) indexEnd = stringBuilder.length();
+                        File fileDetail = new File(directory + File.separator + keyPackage);
+                        FileWriter writer = new FileWriter(fileDetail, false);
+                        writer.write(stringBuilder.substring(indexStart, indexEnd));
+                        writer.flush();
+                        writer.close();
+                    }
+                } catch (Exception ignored) {
                 }
             }
 

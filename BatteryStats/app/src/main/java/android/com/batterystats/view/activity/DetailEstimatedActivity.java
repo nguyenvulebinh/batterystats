@@ -32,6 +32,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.MPPointF;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -48,6 +49,7 @@ public class DetailEstimatedActivity extends AppCompatActivity implements
     private ArrayList<ApplicationInfo> listApplicationInfos;
     private DetailEstimatedModelView modelView;
     private ArrayList<PieEntry> entries;
+    private String directory;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,11 +59,14 @@ public class DetailEstimatedActivity extends AppCompatActivity implements
         dataBinding.setDeMV(modelView);
         Intent intent = getIntent();
         estimatedData = (Estimated) intent.getSerializableExtra("dataEstimate");
+        String time = intent.getStringExtra("time");
+        directory = intent.getStringExtra("directory");
         if (estimatedData == null || estimatedData.getListEntity().size() == 0) {
             Toast.makeText(this, getString(R.string.unknown), Toast.LENGTH_SHORT).show();
             this.finish();
             return;
         }
+        modelView.setTimeEstimate(time);
         listApplicationInfos = new ArrayList<>();
         mTfRegular = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         mTfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
@@ -184,12 +189,14 @@ public class DetailEstimatedActivity extends AppCompatActivity implements
         ApplicationInfo applicationInfo = listApplicationInfos.get(entries.indexOf(e));
         if (applicationInfo != null) {
             dataBinding.iconEntity.setImageDrawable(getPackageManager().getApplicationIcon(applicationInfo));
+            dataBinding.setFileLog(directory + File.separator + applicationInfo.packageName);
         } else {
             if(StaticConfig.MAP_ICON.get(((PieEntry) e).getLabel().toLowerCase()) != null) {
                 dataBinding.iconEntity.setImageDrawable(getDrawable(StaticConfig.MAP_ICON.get(((PieEntry) e).getLabel().toLowerCase())));
             }else {
                 dataBinding.iconEntity.setImageDrawable(getDrawable(R.drawable.ic_android));
             }
+            dataBinding.setFileLog(directory + File.separator + ((PieEntry) e).getLabel());
         }
         modelView.setEntityName(((PieEntry) e).getLabel());
         modelView.setUseEstimated(getString(R.string.use) + " :" + ((PieEntry) e).getValue() + " mAh");

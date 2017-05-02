@@ -12,10 +12,12 @@ import android.view.View;
 
 public class ItemEstimateModelView {
 
-    public void showChart(View view, Estimated estimated){
+    public void showChart(View view, Estimated estimated, String time, String directory){
         Intent intent = new Intent(view.getContext(), DetailEstimatedActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("dataEstimate", estimated);
+        intent.putExtra("time", time);
+        intent.putExtra("directory", directory);
         view.getContext().startActivity(intent);
     }
 }

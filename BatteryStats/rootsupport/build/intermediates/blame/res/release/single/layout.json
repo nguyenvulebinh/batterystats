@@ -8,12 +8,12 @@
         "source": "/home/nguyenbinh/.android/build-cache/ca0a7dc7cb3155350618411656c8906f8529ea4f/output/res/layout/abc_action_menu_layout.xml"
     },
     {
-        "merged": "/home/nguyenbinh/Programming/Android/AndroidStudioWorkSpace/batterystats/BatteryStats/rootsupport/build/intermediates/res/merged/release/layout/main.xml",
-        "source": "/home/nguyenbinh/Programming/Android/AndroidStudioWorkSpace/batterystats/BatteryStats/rootsupport/src/main/res/layout/main.xml"
-    },
-    {
         "merged": "/home/nguyenbinh/Programming/Android/AndroidStudioWorkSpace/batterystats/BatteryStats/rootsupport/build/intermediates/res/merged/release/layout/select_dialog_singlechoice_material.xml",
         "source": "/home/nguyenbinh/.android/build-cache/ca0a7dc7cb3155350618411656c8906f8529ea4f/output/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/home/nguyenbinh/Programming/Android/AndroidStudioWorkSpace/batterystats/BatteryStats/rootsupport/build/intermediates/res/merged/release/layout/main.xml",
+        "source": "/home/nguyenbinh/Programming/Android/AndroidStudioWorkSpace/batterystats/BatteryStats/rootsupport/src/main/res/layout/main.xml"
     },
     {
         "merged": "/home/nguyenbinh/Programming/Android/AndroidStudioWorkSpace/batterystats/BatteryStats/rootsupport/build/intermediates/res/merged/release/layout/notification_template_big_media.xml",
